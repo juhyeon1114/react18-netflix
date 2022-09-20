@@ -1,4 +1,4 @@
-const requests = {
+export const requests = {
     fetchNowPlaying: 'movie/now_playing',
     fetchNetflixOriginals: '/discover/tv?with_networks=213',
     fetchTrending: '/trending/all/week',
@@ -9,5 +9,3 @@ const requests = {
     fetchRomanceMovies: '/discover/movie?with_genre=10749',
     fetchDocumentaries: '/discover/movie?with_genre=99',
 }
-
-export default requests;
