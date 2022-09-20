@@ -32,7 +32,9 @@ const Row = ({title, fetchUrl, isLargeRow, id}) => {
             </div>
             
             <div id={id} className='row__posters'>
-                {movies.map((movie, idx) => idx < 10 ? <LazyLoadImage key={movie.id} className={`row__poster ${isLargeRow ? 'row__posterLarge' : ''}`} src={movieSrc(movie, isLargeRow)} /> : '')}
+                {movies.map((movie, idx) => (
+                    <LazyLoadImage key={movie.id} className={`row__poster ${isLargeRow ? 'row__posterLarge' : ''}`} src={movieSrc(movie, isLargeRow)} />
+                ))}
             </div>
 
             <div className='slider__arrow-right'>
