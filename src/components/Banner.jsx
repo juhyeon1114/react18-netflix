@@ -70,7 +70,7 @@ const Banner = () => {
     }, [movie])
 
     const background = useMemo(() => {
-        return movie ? `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")` : '';
+        return movie ? `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`.replace('original//', 'original/') : '';
     }, [movie])
 
     const title = useMemo(() => {
@@ -108,7 +108,7 @@ const Banner = () => {
         )
     } else {
         return (
-            <Container>
+            <Container className='banner'>
                 <HomeContainer>
                     <Iframe
                         width="560"
