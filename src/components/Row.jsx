@@ -4,10 +4,13 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { api } from '../api/axios'
+import MovieModal from './MovieModal'
 import './Row.less'
 
 const Row = ({title, fetchUrl, isLargeRow, id}) => {
     const [movies, setMovies] = useState([])
+    const [selectedMovie, setSelectedMovie] = useState(null)
+    const [modal, setModal] = useState([])
     const row = useRef();
 
     const fetchData = async () => {
@@ -29,6 +32,11 @@ const Row = ({title, fetchUrl, isLargeRow, id}) => {
         }
     }
 
+    const handleClick = (movie) => {
+        setSelectedMovie(movie)
+        setModal(true)
+    }
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -46,6 +54,7 @@ const Row = ({title, fetchUrl, isLargeRow, id}) => {
                         key={movie.id}
                         className={`row__poster ${isLargeRow ? 'row__posterLarge' : ''}`}
                         src={movieSrc(movie, isLargeRow)}
+                        onClick={() => handleClick(movie)}
                     />
                 ))}
             </div>
@@ -54,6 +63,7 @@ const Row = ({title, fetchUrl, isLargeRow, id}) => {
                 <span className='arrow'>{'>'}</span>
             </div>
         </div>
+        { modal && selectedMovie && <MovieModal movie={selectedMovie} setModal={setModal}></MovieModal> }
     </section>
 }
 
