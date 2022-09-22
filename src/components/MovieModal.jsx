@@ -1,5 +1,5 @@
-import React from 'react'
-import { useMemo } from 'react'
+import React, {useRef, useMemo} from 'react'
+import { useClickOutside } from '../hooks/useClickOutside'
 import './MovieModal.less'
 
 const MovieModal = ({movie, setModal}) => {
@@ -8,12 +8,15 @@ const MovieModal = ({movie, setModal}) => {
   const avg = useMemo(() => movie?.vote_average || '', [movie])
   const overview = useMemo(() => movie?.overview || '', [movie])
   const bgImage = useMemo(() => `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`, [movie])
-  const closeModal = () => setModal(false)
+  const ref = useRef()
+  useClickOutside(ref, () => closeModal(), true)
+  
+  let closeModal = () => setModal(false)
 
   return <>
     <div className='presentation'>
       <div className="wrapper-modal">
-        <div className="modal">
+        <div className="modal" ref={ref}>
           <span className='modal-close' onClick={() => closeModal()}>X</span>
           <img className='modal__poster-img' src={bgImage} alt="modal__poster-img" />
           <div className="modal__content">
