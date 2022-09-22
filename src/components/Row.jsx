@@ -41,30 +41,32 @@ const Row = ({title, fetchUrl, isLargeRow, id}) => {
         fetchData()
     }, [])
 
-    return <section className='row'>
-        <h2>{title}</h2>
-        <div className='slider'>
-            <div className='slider__arrow-left' onClick={() => handleArrow(true)}>
-                <span className='arrow'>{'<'}</span>
-            </div>
-            
-            <div id={id} className='row__posters' ref={row}>
-                {movies.map(movie => (
-                    <LazyLoadImage
-                        key={movie.id}
-                        className={`row__poster ${isLargeRow ? 'row__posterLarge' : ''}`}
-                        src={movieSrc(movie, isLargeRow)}
-                        onClick={() => handleClick(movie)}
-                    />
-                ))}
-            </div>
+    return <>
+        <section className='row'>
+            <h2>{title}</h2>
+            <div className='slider'>
+                <div className='slider__arrow-left' onClick={() => handleArrow(true)}>
+                    <span className='arrow'>{'<'}</span>
+                </div>
+                
+                <div id={id} className='row__posters' ref={row}>
+                    {movies.map(movie => (
+                        <LazyLoadImage
+                            key={movie.id}
+                            className={`row__poster ${isLargeRow ? 'row__posterLarge' : ''}`}
+                            src={movieSrc(movie, isLargeRow)}
+                            onClick={() => handleClick(movie)}
+                        />
+                    ))}
+                </div>
 
-            <div className='slider__arrow-right' onClick={() => handleArrow()}>
-                <span className='arrow'>{'>'}</span>
+                <div className='slider__arrow-right' onClick={() => handleArrow()}>
+                    <span className='arrow'>{'>'}</span>
+                </div>
             </div>
-        </div>
-        { modal && selectedMovie && <MovieModal movie={selectedMovie} setModal={setModal}></MovieModal> }
-    </section>
+            { modal && selectedMovie && <MovieModal movie={selectedMovie} setModal={setModal}></MovieModal> }
+        </section>
+    </>
 }
 
 export default Row

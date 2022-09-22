@@ -2,23 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Footer = () => {
-    return <FooterContainer>
-        <FooterContent>
-            <FooterLinkContainer>
-                <FooterLinkTitle>넷플릭스 대한민국</FooterLinkTitle>
-                <FooterLinkContent>
-                    <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">넷플릭스 소개</FooterLink>
-                    <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">고객센터</FooterLink>
-                    <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">미디어 센터</FooterLink>
-                    <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">이용약관</FooterLink>
-                </FooterLinkContent>
+    return <>
+        <FooterContainer>
+            <FooterContent>
+                <FooterLinkContainer>
+                    <FooterLinkTitle>넷플릭스 대한민국</FooterLinkTitle>
+                    <FooterLinkContent>
+                        <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">넷플릭스 소개</FooterLink>
+                        <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">고객센터</FooterLink>
+                        <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">미디어 센터</FooterLink>
+                        <FooterLink target="_blank" href="https://help.netflix.com/ko/node/412">이용약관</FooterLink>
+                    </FooterLinkContent>
 
-                <FooterDescContainer>
-                    <FooterDescRights>@Netflix rights reserved</FooterDescRights>
-                </FooterDescContainer>
-            </FooterLinkContainer>
-        </FooterContent>
-    </FooterContainer>
+                    <FooterDescContainer>
+                        <FooterDescRights>@Netflix rights reserved</FooterDescRights>
+                    </FooterDescContainer>
+                </FooterLinkContainer>
+            </FooterContent>
+        </FooterContainer>
+    </>
 }
 
 export default Footer

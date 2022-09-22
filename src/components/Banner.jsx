@@ -86,10 +86,8 @@ const Banner = () => {
     }, [])
 
     if (!clicked) {
-        return (
-            <header className='banner' style={
-                {backgroundImage: background}
-            }>
+        return <>
+            <header className='banner' style={{backgroundImage: background} }>
                 <div className='banner__contents'>
                     <h1 className='banner__title'>{title}</h1>
                     <div className="banner__buttons">
@@ -105,9 +103,9 @@ const Banner = () => {
                 </div>
                 <div className='banner--fadeBottom'></div>
             </header>
-        )
+        </>
     } else {
-        return (
+        return <>
             <Container className='banner'>
                 <HomeContainer>
                     <Iframe
@@ -119,7 +117,7 @@ const Banner = () => {
                     />
                 </HomeContainer>
             </Container>
-        )
+        </>
     }
 }
 
