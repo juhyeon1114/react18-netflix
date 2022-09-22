@@ -2,25 +2,26 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useDebouncedCallback } from '../hooks/useDebounceCallback'
 
 const SearchInput = () => {
     const [searchValue, setSearchValue] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
 
-    const useQuery = () => {
-        return new URLSearchParams(location.search)
-    }
+    const useQuery = () => new URLSearchParams(location.search)
 
     const handleChange = (e) => {
         const v = e.target.value
         setSearchValue(v)
-        navigate(`/search?q=${v}`)
+        search(v)
     }
 
     const handleKeyUp = (e) => {
         e.code === 'Enter' && !searchValue.trim() && navigate('/')
     }
+
+    const search = useDebouncedCallback((v) => navigate(`/search?q=${v}`), 500)
 
     useEffect(() => {
         let query = useQuery();
