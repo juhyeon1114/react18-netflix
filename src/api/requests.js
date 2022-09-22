@@ -1,5 +1,6 @@
 export const requests = {
-    getVideos: (id) => (`/movie/${id}/videos`),
+    getDetail: (id) => `/movie/${id}`,
+    getVideos: (id) => `/movie/${id}/videos`,
     fetchNowPlaying: '/movie/now_playing',
     fetchNetflixOriginals: '/discover/tv?with_networks=213',
     fetchTrending: '/trending/all/week',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { api } from '../../api/axios'
 import './SearchPage.less'
 
@@ -9,6 +9,7 @@ const SearchPage = () => {
   const location = useLocation()
   const [searchTerm, setSearchTerm] = useState('')
   const [results, setResults] = useState([])
+  const navigate = useNavigate();
 
   const useQuery = () => {
     return new URLSearchParams(location.search)
@@ -24,6 +25,10 @@ const SearchPage = () => {
     }
   }
 
+  const handleClick = (movie) => {
+    navigate(`/detail/${movie.id}`)
+  }
+
   useEffect(() => {
     let query = useQuery();
     setSearchTerm(query.get('q'))
@@ -37,7 +42,7 @@ const SearchPage = () => {
           if (movie.backdrop_path !== null && movie.media_type !== 'person') {
             const url = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
             return <div className="movie" key={movie.id}>
-              <div className="movie__column-poster">
+              <div className="movie__column-poster" onClick={() => handleClick(movie)}>
                 <img src={url} className="movie__poster" />
               </div>
             </div>
